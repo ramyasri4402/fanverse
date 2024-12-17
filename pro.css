@@ -1,0 +1,427 @@
+:root {
+    --primary-color: #1E60AA ;
+    --secondary-color: #17224D;
+    --background-color: #ecf0f1;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --hover-bg: #34495e;
+}
+.product-type{
+    font-size: 16px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.15;
+    transition: opacity 0.4s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+}
+
+.product-card:hover {
+    /* transform: translateY(-10px) scale(1.05); */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card:hover::after {
+    opacity: 0.3;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-container {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.15);
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.product-name:hover {
+    color: var(--primary-color);
+}
+
+.product-description {
+    font-size: 14px;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-description {
+    opacity: 1;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.pagination-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    background-color: #b2bec3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 500;
+    background-color: white;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.page-number:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.page-number.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.view-more-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.view-more-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: #1E60AA ;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.view-more-btn:hover {
+    transform: translateY(-5px);
+}
+
+.view-more-btn:hover::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.view-more-btn:hover {
+    background-color: #1abc9c;
+}
+
+.view-more-btn:focus {
+    outline: none;
+}
+
+
+
+
+/* Product Grid Container */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Product Card Styles */
+.product-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-info {
+    padding: 1rem;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+}
+
+.page-numbers {
+    display: none;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .pagination {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .page-numbers {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .pagination-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+
+    .product-info {
+        padding: 1.5rem;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+        padding: 2.5rem;
+    }
+}
+
+/* XXL devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .product-grid {
+        max-width: 1400px;
+    }
+}
+
+/* Hover Effects (for devices that support hover) */
+@media (hover: hover) {
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+        transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.1);
+    }
+
+    .pagination-btn:hover {
+        background-color: var(--hover-bg);
+        color: white;
+    }
+}
+
+
+
+/* Print Media Styles */
+@media print {
+    .product-grid {
+        display: block;
+    }
+
+    .product-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+
+    .pagination {
+        display: none;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .product-card,
+    .product-image {
+        transition: none;
+    }
+}
+
+
+
+.wishlist-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Active state for wishlist button */
+.wishlist-btn.active {
+    color: #e74c3c; /* Change color or use a filled heart icon */
+}

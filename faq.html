@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FANVERSE</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--  Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eaeaea;
+            /* Light gray background */
+            color: #333333;
+            /* Dark text color for readability */
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            /* Ensures body fills the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            /* Align to the top for better spacing */
+            text-align: center;
+        }
+
+        .container1 {
+            background-color: #ffffff;
+            /* White background for the container */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+            overflow-y: auto;
+            /* Allow scrolling if content overflows */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 500;
+            color: #f1c40f;
+            /* Bright yellow for the header */
+            margin-bottom: 20px;
+            /* Reduced space below the heading */
+        }
+
+        .search-bar {
+            width: 95%;
+            padding: 16px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 2px solid #f5a623;
+            background-color: #f7f7f7;
+            /* Light background for the search bar */
+            color: #333;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            border-color: #f1c40f;
+            background-color: #fff;
+            outline: none;
+        }
+
+        .faq-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-button {
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            background: linear-gradient(145deg, #f1c40f, #f39c12);
+            /* Gradient for buttons */
+            color: #ffffff;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .faq-button:hover {
+            background: linear-gradient(145deg, #f39c12, #f1c40f);
+            /* Hover effect with reversed gradient */
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-button i {
+            margin-right: 15px;
+            font-size: 22px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 20px;
+            background-color: #f7f7f7;
+            /* Same background color for answers */
+            color: #333;
+            font-size: 16px;
+            border-radius: 12px;
+            border-left: 5px solid #f1c40f;
+            /* Yellow border */
+            margin-top: 10px;
+            text-align: left;
+            line-height: 1.6;
+            position: relative;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-button {
+            background: linear-gradient(145deg, #e67e22, #f39c12);
+            /* Change gradient when open */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .faq-button {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(conban.jpg) center center no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="index-page">
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light d-none d-lg-block">
+        <div class="row align-items-center top-bar">
+            <div class="col-lg-3 col-md-12 text-center text-lg-start">
+                <a href="index.html" class="navbar-brand m-0 p-0">
+                    <h1 class="text-primary m-0">FANVERSE</h1>
+                </a>
+            </div>
+            <div class="col-lg-9 col-md-12 text-end">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <i class="fa fa-map-marker-alt text-primary me-2"></i>
+                    <p class="m-0">100 ft road, Madhapur, HYD</p>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <i class="far fa-envelope-open text-primary me-2"></i>
+                    <p class="m-0">info@fanverse.com</p>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href="https://www.facebook.com/"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href="https://www.twitter.com/"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href="https://www.linkedin.com/"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid nav-bar bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
+            <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+                <h1 class="text-primary m-0">FanVerse</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav me-auto">
+                    <a href="index.html" class="nav-item nav-link ">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="product.html" class="nav-item nav-link">Products</a>
+                    <a href="Blog.html" class="nav-item nav-link">Blog</a>
+                    <a href="faq.html" class="nav-item nav-link active">FAQ's</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4 bg-primary d-flex align-items-center">
+                    <!-- Cart Icon -->
+                    <a href="cart.html" class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                        style="width: 45px; height: 45px;">
+                        <i class="fa fa-shopping-cart text-primary"></i>
+                    </a>
+                    <!-- User Profile Icon -->
+                    <a href="dashboard.html"
+                        class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white"
+                        style="width: 45px; height: 45px;">
+                        <i class="fa fa-user text-primary"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 py-5">
+        <div class="container">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">FAQ'S</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Faq</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <div class="body">
+
+        <div class="container1" data-aos="fade-up">
+            <h1>Frequently Asked Questions</h1>
+
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search for questions..."
+                onkeyup="searchFAQ()">
+
+            <div class="faq-list">
+                <!-- FAQ 1: What are the benefits of using a Stand Fan? -->
+                <div class="faq-item" data-aos="fade-right">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-fan"></i> What are the benefits of using a Stand Fan?
+                    </button>
+                    <div class="faq-answer">
+                        Stand fans are portable, easy to adjust for airflow direction, and provide excellent air
+                        circulation in large rooms or spaces. They are ideal for both home and office use.
+                    </div>
+                </div>
+
+                <!-- FAQ 2: How do I install a Wall Fan? -->
+                <div class="faq-item" data-aos="fade-left">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-mountain"></i> How do I install a Wall Fan?
+                    </button>
+                    <div class="faq-answer">
+                        Wall fans can be easily installed by mounting them on a wall using screws and brackets. Ensure
+                        the fan is positioned in a way to circulate air effectively throughout the room.
+                    </div>
+                </div>
+
+                <!-- FAQ 3: What is the advantage of a Ceiling Fan? -->
+                <div class="faq-item" data-aos="fade-right">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-arrow-up"></i> What is the advantage of a Ceiling Fan?
+                    </button>
+                    <div class="faq-answer">
+                        Ceiling fans are energy-efficient, providing consistent air circulation in larger spaces. They
+                        are perfect for reducing indoor temperature in summer and distributing warmth in winter.
+                    </div>
+                </div>
+
+                <!-- FAQ 4: How does an Exhaust Fan improve air quality? -->
+                <div class="faq-item" data-aos="fade-left">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-sync-alt"></i> How does an Exhaust Fan improve air quality?
+                    </button>
+                    <div class="faq-answer">
+                        Exhaust fans are designed to remove stale air, odors, and moisture from bathrooms, kitchens, and
+                        other areas. They help improve air quality by increasing ventilation and reducing humidity.
+                    </div>
+                </div>
+
+                <!-- FAQ 5: Are Table Fans suitable for small rooms? -->
+                <div class="faq-item" data-aos="fade-right">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-table"></i> Are Table Fans suitable for small rooms?
+                    </button>
+                    <div class="faq-answer">
+                        Yes, table fans are compact, portable, and ideal for small rooms or desks. They provide targeted
+                        airflow, making them a great choice for individual comfort.
+                    </div>
+                </div>
+
+                <!-- FAQ 6: What is a Tower Fan and how does it work? -->
+                <div class="faq-item" data-aos="fade-left">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-building"></i> What is a Tower Fan and how does it work?
+                    </button>
+                    <div class="faq-answer">
+                        A tower fan is a sleek, vertical fan that provides powerful airflow in a compact design. It
+                        oscillates and circulates air, making it ideal for rooms with limited space.
+                    </div>
+                </div>
+
+                <!-- FAQ 7: What makes a Smart Fan different from regular fans? -->
+                <div class="faq-item" data-aos="fade-right">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-plug"></i> What makes a Smart Fan different from regular fans?
+                    </button>
+                    <div class="faq-answer">
+                        Smart fans are equipped with Wi-Fi connectivity, allowing you to control them through a mobile
+                        app or voice assistants like Alexa or Google Assistant. They also feature customizable settings
+                        such as speed and timer.
+                    </div>
+                </div>
+
+                <!-- FAQ 8: How do Bladeless Fans work? -->
+                <div class="faq-item" data-aos="fade-left">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-wind"></i> How do Bladeless Fans work?
+                    </button>
+                    <div class="faq-answer">
+                        Bladeless fans use air multiplier technology to draw in air and project a smooth, powerful
+                        airflow without visible blades. They are quieter, safer, and easy to clean compared to
+                        traditional fans.
+                    </div>
+                </div>
+
+                <!-- FAQ 9: Can Window Fans help with cooling a room? -->
+                <div class="faq-item" data-aos="fade-right">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-window-restore"></i> Can Window Fans help with cooling a room?
+                    </button>
+                    <div class="faq-answer">
+                        Yes, window fans help cool a room by drawing in cool air from outside or exhausting warm air
+                        from inside. They are particularly effective when positioned in a window to optimize airflow.
+                    </div>
+                </div>
+
+                <!-- FAQ 10: What makes Industrial Fans suitable for large spaces? -->
+                <div class="faq-item" data-aos="fade-left">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <i class="fas fa-industry"></i> What makes Industrial Fans suitable for large spaces?
+                    </button>
+                    <div class="faq-answer">
+                        Industrial fans are designed for heavy-duty use and are capable of providing high airflow in
+                        large, open spaces like warehouses or factories. They are built to withstand harsh environments
+                        and ensure efficient ventilation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        // Toggle FAQ Answer Visibility
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const isOpen = faqItem.classList.contains('open');
+
+            // Close all FAQs first
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            allFaqItems.forEach(item => item.classList.remove('open'));
+
+            // Open the clicked FAQ if it was closed
+            if (!isOpen) {
+                faqItem.classList.add('open');
+            }
+        }
+
+        // Search Functionality
+        function searchFAQ() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('.faq-button').textContent.toLowerCase();
+                if (questionText.includes(searchInput)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>100 ft road, Madhapur, HYD</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@fanverse.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="https://www.twitter.com"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Opening Hours</h4>
+                    <h6 class="text-light">Monday - Friday:</h6>
+                    <p class="mb-4">09.00 AM - 09.00 PM</p>
+                    <h6 class="text-light">Saturday - Sunday:</h6>
+                    <p class="mb-0">09.00 AM - 12.00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="about.html">About</a>
+                    <a class="btn btn-link" href="product.html">Products</a>
+                    <a class="btn btn-link" href="blog.html">Blog</a>
+                    <a class="btn btn-link" href="contact.html">Contact</a>
+                    <a class="btn btn-link" href="faq.html"> FAQ's</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Newsletter</h4>
+                    <p>Welcome to the ultimate fan site! Dive into exclusive updates, behind-the-scenes content, and all
+                        the latest news about your favorite stars and fandoms. Stay connected with fellow fans and
+                        celebrate the moments that make this community special.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom">Codetek</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By Codetek.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!--  Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

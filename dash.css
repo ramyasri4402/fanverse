@@ -1,0 +1,1428 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    /* Ensures full viewport height */
+    /* Prevents the entire page from scrolling */
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to right, #2c88ad, #87CEEB);
+    color: white;
+    min-height: 100vh;
+    position: fixed;
+    /* Fixes the sidebar in place */
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+}
+
+.main-content {
+    margin-left: 250px;
+    /* Creates space for the fixed sidebar */
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    /* Allows the main content to scroll */
+    height: 100vh;
+    /* Ensures full viewport height */
+    box-sizing: border-box;
+    /* Includes padding in height calculation */
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: #1E60AA;
+}
+
+.sidebar ul li i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+
+/* Main Content */
+/* Header */
+.header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-bottom: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 24px;
+    margin: 0;
+}
+
+.header .icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #1E60AA;
+}
+
+.header .icon:hover {
+    color: #FF4917;
+}
+
+.dashboard-section {
+    display: none;
+}
+
+.dashboard-section.active {
+    display: block;
+}
+
+
+
+/* Profile View - Card Style */
+.profile-view {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #fefefe;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.profile-view h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #FF4917;;
+    text-align: center;
+}
+
+.profile-view .profile-fields div {
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    padding: 5px 0;
+}
+
+.profile-view .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #1E60AA;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-view .btn:hover {
+    background-color: #FF4917;
+    transform: translateY(-3px);
+}
+
+/* Profile Edit - Form Style */
+.profile-edit {
+    margin-top: 20px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-edit h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #1E60AA;
+}
+
+.profile-edit label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-edit input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+}
+
+.profile-edit input:focus {
+    border-color: #F2E98F;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 93, 104, 0.5);
+}
+
+.profile-edit .btn {
+    padding: 12px 20px;
+    background-color: #1E60AA;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.profile-edit .btn.cancel {
+    background-color: #1E60AA;
+}
+
+.profile-edit .btn.cancel:hover {
+    background-color: #FF4917;
+}
+
+.profile-edit .btn:hover {
+    background-color: #FF4917;
+    transform: translateY(-3px);
+}
+
+/* Hide edit profile section initially */
+.hidden {
+    display: none;
+}
+
+/* Profile View Enhancements */
+.profile-view {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Chart Styling */
+/* Training Info Section */
+.training-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.training-info h3 {
+    margin-bottom: 10px;
+    color: #F2E98F;
+}
+
+.training-info ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: #6C648B;
+}
+
+.training-info p {
+    color: #333;
+}
+
+/* Chart Container */
+/* General Styling */
+.dashboard-section {
+    padding: 30px;
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(to right, #2c88ad, #87CEEB);
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Training Program Cards */
+.training-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: #0e0d0d;
+}
+
+.card p {
+    color: #333;
+    font-size: 14px;
+}
+
+/* Chart Container */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.chart {
+    flex: 1;
+    height: 300px;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Bar and Pie Chart Styling */
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*  Order History css*/
+
+/* Base Styles for Dashboard Section */
+.dashboard-section {
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #00008B;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Order Table Styles */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+    background-color: #1E60AA;
+    /* Primary color */
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.orders-table tr:hover {
+    background-color: #1E60AA;
+    /* Hover color */
+    transition: all 0.3s ease;
+}
+
+.orders-table .delete-btn {
+    padding: 6px 12px;
+    background-color: #FF6347;
+    /* Tomato Red */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.orders-table .delete-btn:hover {
+    background-color: #FF4500;
+    /* Orange Red */
+}
+
+/* Add Order Button */
+#add-order-btn {
+    background-color: #6C648B;
+    /* Primary color */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+}
+
+#add-order-btn:hover {
+    background-color: #F2E98F;
+    /* Hover color */
+}
+
+/* Hidden Add Order Form */
+#add-order-form {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#add-order-form h3 {
+    color: #6C648B;
+    /* Primary color */
+    margin-bottom: 20px;
+}
+
+/* Mobile devices (up to 600px wide) */
+@media screen and (max-width: 600px) {
+    .orders-table {
+        width: 100%;
+        font-size: 14px; /* Smaller font size for better readability on small screens */
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 8px; /* Reduced padding for smaller screens */
+    }
+
+    .orders-table tr:hover {
+        background-color: #1E60AA;
+    }
+
+    /* Make the delete button smaller on mobile */
+    .orders-table .delete-btn {
+        padding: 4px 8px; /* Reduced padding */
+        font-size: 12px;  /* Smaller font size */
+    }
+
+    /* Add Order Button */
+    #add-order-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+        margin: 20px 10px;
+    }
+
+    /* Hidden Add Order Form */
+    #add-order-form {
+        padding: 16px; /* Reduced padding */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    #add-order-form h3 {
+        font-size: 18px; /* Smaller heading for mobile */
+    }
+
+    /* Stack the columns for smaller screens */
+    .orders-table th,
+    .orders-table td {
+        display: block;
+        text-align: left;
+        padding: 10px 5px;
+    }
+
+    .orders-table td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .orders-table th {
+        display: none; /* Hide header on small screens */
+    }
+}
+
+/* Tablets (601px to 900px wide) */
+@media screen and (max-width: 900px) and (min-width: 601px) {
+    .orders-table {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 10px;
+    }
+
+    .orders-table .delete-btn {
+        padding: 5px 10px; /* Slightly smaller delete button */
+        font-size: 14px;
+    }
+
+    /* Add Order Button */
+    #add-order-btn {
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+
+    /* Hidden Add Order Form */
+    #add-order-form {
+        padding: 18px;
+    }
+
+    #add-order-form h3 {
+        font-size: 20px; /* Adjust heading for tablets */
+    }
+
+    /* Stack the columns for tablets */
+    .orders-table th,
+    .orders-table td {
+        display: block;
+        text-align: left;
+        padding: 10px 5px;
+    }
+
+    .orders-table td {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .orders-table th {
+        display: none; /* Hide header on smaller tablet screens */
+    }
+}
+
+
+
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+form input,
+form select {
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #6C648B;
+    /* Primary color */
+    outline: none;
+}
+
+form button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .cancel {
+    background-color: #FF6347;
+    /* Tomato Red */
+    color: white;
+}
+
+form .cancel:hover {
+    background-color: #FF4500;
+    /* Orange Red */
+}
+
+form .save {
+    background-color: #6C648B;
+    /* Primary color */
+    color: white;
+}
+
+form .save:hover {
+    background-color: #F2E98F;
+    /* Hover color */
+}
+
+
+/* Media Query for 360px screen */
+@media (max-width: 360px) {
+    .dashboard-section {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    /* Table Styles for Mobile */
+    .orders-table {
+        font-size: 12px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 8px;
+    }
+
+    .orders-table th {
+        font-size: 13px;
+    }
+
+    /* Button Styles */
+    #add-order-btn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .orders-table .delete-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    /* Add Order Form Styles */
+    #add-order-form {
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    #add-order-form h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Form Fields */
+    form input,
+    form select {
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    form label {
+        font-size: 12px;
+    }
+
+    form button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    /* Responsive Cancel and Save Button */
+    form .cancel,
+    form .save {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+/* Media Query for 320px screen */
+@media (max-width: 320px) {
+    .dashboard-section {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        padding: 0 8px;
+    }
+
+    /* Table Styles for Mobile */
+    .orders-table {
+        font-size: 10px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 6px;
+    }
+
+    .orders-table th {
+        font-size: 11px;
+    }
+
+    /* Button Styles */
+    #add-order-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .orders-table .delete-btn {
+        padding: 4px 8px;
+        font-size: 8px;
+    }
+
+    /* Add Order Form Styles */
+    #add-order-form {
+        padding: 12px;
+        margin-top: 12px;
+    }
+
+    #add-order-form h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Form Fields */
+    form input,
+    form select {
+        font-size: 12px;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    form label {
+        font-size: 10px;
+    }
+
+    form button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    /* Responsive Cancel and Save Button */
+    form .cancel,
+    form .save {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+
+/* Wishlist css Start */
+
+/* General Wishlist Section Styling */
+#wishlist {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#wishlist h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Wishlist Container for the cards */
+.wishlist-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 items per row */
+    gap: 15px;
+    /* Space between the cards */
+    padding: 20px;
+    justify-items: center;
+    /* Centers the items horizontally */
+}
+
+/* Card styling */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    /* Reduced padding */
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Slightly smaller shadow */
+    transition: transform 0.3s ease;
+    max-width: 220px;
+    /* Set a maximum width for cards */
+    margin: 0 auto;
+    /* Centers the card horizontally */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card h3 {
+    font-size: 16px;
+    /* Smaller font size for title */
+    margin: 8px 0;
+    /* Reduced margin */
+}
+
+.card p {
+    font-size: 14px;
+    /* Smaller font size for price */
+    color: #333;
+}
+
+.card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    /* Reduced padding */
+    font-size: 12px;
+    /* Smaller button text */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.card button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsiveness: Stack the cards on smaller screens */
+@media (max-width: 1200px) {
+    .wishlist-container {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 items per row */
+    }
+}
+
+@media (max-width: 900px) {
+    .wishlist-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 items per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .wishlist-container {
+        grid-template-columns: 1fr;
+        /* 1 item per row */
+    }
+}
+
+
+/* session notes css */
+
+/* Notes Grid Container */
+.notes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    /* Ensures the border radius applies to the whole table */
+    background-color: #f9f9f9;
+}
+
+.notes-table th,
+.notes-table td {
+    border: none;
+    /* Remove border for a cleaner look */
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.notes-table th {
+    background-color: #067581;
+    /* Deep royal purple */
+    color: #ffd700;
+    /* Gold for text */
+    font-weight: 600;
+    text-transform: uppercase;
+    /* Adds a sophisticated touch */
+    letter-spacing: 1px;
+    /* Subtle spacing for a refined feel */
+}
+
+.notes-table tbody tr:nth-child(even) {
+    background-color: #f8f0e3;
+    /* Light ivory for alternate rows */
+}
+
+.notes-table tbody tr:nth-child(odd) {
+    background-color: #fff5e6;
+    /* Soft cream for odd rows */
+}
+
+.notes-table tbody tr:hover {
+    background-color: #e6d8d2;
+    /* Subtle rose gold highlight */
+    transition: background-color 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.notes-table td {
+    color: #000000;
+    /* Dark purple text for readability */
+    font-size: 16px;
+}
+
+/* Button Styling */
+.download-btn {
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+    /* Gold gradient */
+    color: #4b0082;
+    /* Royal purple text */
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-btn:hover {
+    background: linear-gradient(135deg, #f4c430, #8b7500);
+    /* Rich gold gradient on hover */
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* notification css */
+
+.notifications-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notification:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.notification p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.delete-btn {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #ff4a4a;
+    transform: scale(1.1);
+}
+
+.clear-all-btn {
+    display: none;
+    background-color: #0078d7;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clear-all-btn:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+}
+
+
+
+/* Media Queries for Responsiveness */
+
+/* General Layout - Sidebar and Main Content */
+@media screen and (max-width: 1024px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        min-height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 20px;
+        height: auto;
+    }
+}
+
+/* For Tablets and Below (Landscape and Portrait) */
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        padding: 20px 0;
+    }
+
+    .sidebar ul li {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        height: auto;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .profile-view h3 {
+        font-size: 18px;
+    }
+
+    .profile-edit h3 {
+        font-size: 20px;
+    }
+
+    .training-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .chart-container {
+        flex-direction: column;
+    }
+
+    /* Order History */
+    .orders-table th,
+    .orders-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #add-order-btn {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+
+    /* Wishlist Section */
+    .wishlist-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 items per row */
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .card button {
+        font-size: 14px;
+    }
+
+    .notifications-container {
+        max-height: 300px;
+    }
+
+    /* Form Inputs */
+    form input,
+    form select,
+    form button {
+        font-size: 14px;
+    }
+}
+
+/* For Mobile (Portrait) */
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+        height: auto;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .profile-view h3 {
+        font-size: 16px;
+    }
+
+    .profile-edit h3 {
+        font-size: 18px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    #add-order-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    /* Wishlist Section */
+    .wishlist-container {
+        grid-template-columns: 1fr;
+        /* 1 item per row */
+    }
+
+    .card h3 {
+        font-size: 14px;
+    }
+
+    .card p {
+        font-size: 12px;
+    }
+
+    .card button {
+        font-size: 12px;
+    }
+
+    .notifications-container {
+        max-height: 200px;
+    }
+
+    /* Form Inputs */
+    form input,
+    form select,
+    form button {
+        font-size: 12px;
+    }
+
+    .profile-edit input {
+        font-size: 14px;
+    }
+
+    /* Notification Section */
+    .notification {
+        font-size: 12px;
+    }
+
+    /* Session Notes */
+    .notes-table th,
+    .notes-table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* Download Button */
+    .download-btn {
+        font-size: 12px;
+    }
+}
+
+/* Large Screens */
+@media screen and (min-width: 1200px) {
+    .wishlist-container {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 items per row */
+    }
+}
+
+.product-type {
+    font-size: 16px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* padding: 20px; */
+}
+
+.product-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: center;
+    /* padding: 20px; */
+    backdrop-filter: blur(5px);
+}
+
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.15;
+    transition: opacity 0.4s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+}
+
+.product-card:hover {
+    /* transform: translateY(-10px) scale(1.05); */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card:hover::after {
+    opacity: 0.3;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-container {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.15);
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.product-name:hover {
+    color: var(--primary-color);
+}
+
+.product-description {
+    font-size: 14px;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-description {
+    opacity: 1;
+}
+.view-more-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.view-more-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: #1E60AA;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.view-more-btn:hover {
+    transform: translateY(-5px);
+}
+
+.view-more-btn:hover::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.view-more-btn:hover {
+    background-color: #1abc9c;
+}
+
+.view-more-btn:focus {
+    outline: none;
+}
+ /* Product Card Styles */
+ .product-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-info {
+    padding: 1rem;
+}
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.wishlist-btn.active {
+    color: #e74c3c;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.2);
+}
+.product-card .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card .remove-btn:hover {
+    background-color: #c0392b;
+}
+.product-type {
+    font-size: 16px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* padding: 20px; */
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    /* padding: 1rem; */
+    max-width: 100%;
+    margin: 0 auto;
+}

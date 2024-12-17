@@ -1,0 +1,541 @@
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.hero .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.product-details h2{
+    font-size: 2.6rem;
+}
+
+/* Container for Product Details */
+.container1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Product Image Carousel */
+.w-1/2 {
+    width: 50%;
+}
+
+img {
+    width: 500px;
+    height: 600px;
+    border-radius: 8px;
+}
+
+/* Product Details */
+#productTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e84545;
+}
+
+.text-yellow-500 i {
+    color: #f39c12;
+}
+
+.text-gray-600 {
+    color: #6c757d;
+}
+
+#Price {
+    font-size: 1.5rem;
+    color: #27ae60;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.custom-button {
+    background-color: #1e60aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.custom-button:hover {
+    background-color: #1e60aa;
+}
+
+.icon-cart {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
+
+.buy-now-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.buy-now-button:hover {
+    background-color: #27ae60;
+}
+
+/* Key Features */
+ul.list-disc {
+    padding-left: 20px;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+/* Product Specifications Table */
+.table-auto {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-auto th,
+.table-auto td {
+    padding: 12px;
+    text-align: left;
+}
+
+.table-auto tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-auto th {
+    background-color: #e84545;
+    color: white;
+}
+
+/* Detailed Description */
+.text-gray-700 {
+    color: #555;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #e84545;
+}
+
+/* Customer Reviews */
+.mt-8 {
+    margin-top: -1rem;
+    padding: 30px;
+}
+
+.text-yellow-500 i {
+    color: #f39c12;
+}
+
+.review-container {
+    margin-top: 1rem;
+}
+
+.review-container .flex {
+    display: flex;
+    align-items: center;
+}
+
+.review-container .text-yellow-500 {
+    display: flex;
+}
+
+.review-container .text-gray-700 {
+    color: #555;
+}
+
+.review-container .mt-2 {
+    margin-top: 1rem;
+}
+
+.buttons button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1e60aa;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.buttons button:hover {
+    background-color: #1e60aa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    .w-1/2 {
+        width: 100%;
+    }
+
+    .pl-4 {
+        padding-left: 0;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .custom-button,
+    .buy-now-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+}
+
+/* New Flexbox Layout for the Product Section */
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.product-details {
+    flex: 1;
+    margin-left: 30px;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.quantity button {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 16px;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+/* General Responsive Styles */
+
+/* Mobile Layout (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Hero Section */
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero img {
+        max-height: 300px;
+    }
+
+    /* Product Image */
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Product Details Section */
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .product-image, .product-details {
+        width: 100%;
+        padding-right: 0;
+        margin-left: 0;
+    }
+
+    .product-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .custom-button, .buy-now-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+
+    .quantity button {
+        width: 25px;
+        height: 25px;
+    }
+
+    .quantity input {
+        width: 40px;
+        font-size: 14px;
+    }
+
+    .product-details h2 {
+        font-size: 2.2rem;
+    }
+
+    .table-auto th, .table-auto td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .text-xl {
+        font-size: 1rem;
+    }
+
+    /* Review Section */
+    .review-container .flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .review-container .mt-2 {
+        margin-top: 0;
+    }
+
+    .buttons button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Tablet Layout (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero img {
+        max-height: 350px;
+    }
+
+    /* Product Image */
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Product Details Section */
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .product-image, .product-details {
+        width: 100%;
+        margin-left: 0;
+        padding-right: 0;
+    }
+
+    .product-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .custom-button, .buy-now-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+
+    .quantity button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .quantity input {
+        width: 50px;
+        font-size: 16px;
+    }
+
+    .product-details h2 {
+        font-size: 2.4rem;
+    }
+
+    /* Table Adjustments */
+    .table-auto th, .table-auto td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .text-xl {
+        font-size: 1.1rem;
+    }
+
+    /* Review Section */
+    .review-container .flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .review-container .mt-2 {
+        margin-top: 0;
+    }
+
+    .buttons button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Large Devices / Desktop (min-width: 1200px) */
+@media (min-width: 1200px) {
+    .hero h2 {
+        font-size: 3rem;
+    }
+
+    /* Product Details */
+    .product-container {
+        padding: 40px;
+    }
+
+    .product-details h2 {
+        font-size: 2.6rem;
+    }
+
+    .product-image, .product-details {
+        width: 48%;
+        padding-right: 20px;
+    }
+
+    /* Table Adjustments */
+    .table-auto th, .table-auto td {
+        padding: 15px;
+    }
+
+    .custom-button, .buy-now-button {
+        padding: 14px 30px;
+        font-size: 1.3rem;
+    }
+
+    .quantity button {
+        font-size: 22px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .quantity input {
+        font-size: 18px;
+        width: 60px;
+    }
+
+    .product-buttons {
+        gap: 15px;
+    }
+
+    .review-container .flex {
+        flex-direction: row;
+    }
+}
+
+/* Extra Large Devices (min-width: 1600px) */
+@media (min-width: 1600px) {
+    .hero h2 {
+        font-size: 3.5rem;
+    }
+
+    .product-container {
+        padding: 50px;
+    }
+
+    .product-image, .product-details {
+        width: 45%;
+    }
+
+    .custom-button, .buy-now-button {
+        padding: 16px 35px;
+        font-size: 1.4rem;
+    }
+
+    .quantity button {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .quantity input {
+        font-size: 20px;
+        width: 70px;
+    }
+
+    .product-buttons {
+        gap: 20px;
+    }
+
+    .review-container .flex {
+        flex-direction: row;
+    }
+}

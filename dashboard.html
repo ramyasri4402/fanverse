@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FANVERSE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="dash.css">
+
+
+</head>
+
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2><a href="index.html" style="text-decoration: none;color: white;font-size: xx-large;">FANVERSE</a></h2>
+        <ul>
+            <li class="nav-item active" data-section="dashboard">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </li>
+            <li class="nav-item" data-section="profile">
+                <i class="fas fa-user"></i> Profile
+            </li>
+            <li class="nav-item" data-section="order-history">
+                <i class="fas fa-calendar"></i> order-history
+            </li>
+            <li class="nav-item" data-section="wishlist">
+                <i class="fas fa-file-alt"></i> wishlist
+            </li>
+            <li class="nav-item" data-section="notifications">
+                <i class="fas fa-bell"></i> Notifications
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <i class="fas fa-user-circle icon" data-section="profile"></i>
+                <h1>Welcome to FANVERSE Dashboard</h1>
+                <i class="fas fa-bell icon" data-section="notifications"></i>
+            </div>
+        </div>
+
+
+        <div id="dashboard" class="dashboard-section active">
+            <h2>Dashboard Overview</h2>
+
+            <!-- Training Program Cards -->
+            <div class="training-cards">
+                <div class="card">
+                    <h4>Fan Engagement</h4>
+                    <p>Learn how to connect with your fanbase and create lasting relationships.</p>
+                </div>
+                <div class="card">
+                    <h4>Event Management</h4>
+                    <p>Gain the skills to organize and execute memorable fan events and meetups.</p>
+                </div>
+                <div class="card">
+                    <h4>Social Media Promotion</h4>
+                    <p>Master strategies to promote fan pages and engage your audience on social platforms.</p>
+                </div>
+            </div>
+
+
+            <!-- Chart Section -->
+            <div class="chart-container">
+                <div class="chart">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Profile section -->
+        <div id="profile" class="dashboard-section">
+            <h2>Profile Management</h2>
+            <div class="profile-view">
+                <h3>Your Profile</h3>
+                <div class="profile-fields">
+                    <div><strong>Name:</strong> <span id="profileName">John Doe</span></div>
+                    <div><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></div>
+                    <div><strong>Phone:</strong> <span id="profilePhone">123-456-7890</span></div>
+                    <div><strong>Address:</strong> <span id="profileAddress">123 Main Street</span></div>
+                    <div><strong>Date of Birth:</strong> <span id="profileDOB">01/01/1990</span></div>
+                </div>
+                <button id="updateProfileBtn" class="btn">Update Profile</button>
+            </div>
+
+            <!-- Editable Profile Form -->
+            <div class="profile-edit hidden">
+                <h3>Edit Profile</h3>
+                <form id="profileForm">
+                    <label for="editName">Name:</label>
+                    <input type="text" id="editName" value="John Doe">
+                    <span id="name-error" style="color: red; display: none;">Name should only contain letters.</span>
+
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" value="john.doe@example.com">
+                    <span id="email-error" style="color: red; display: none;"></span>
+
+
+                    <label for="editPhone">Phone:</label>
+                    <input type="tel" id="editPhone" value="123-456-7890">
+                    <span id="phone-error" style="color: red; display: none;">Phone number should only contain 10
+                        digits.</span>
+
+                    <label for="editAddress">Address:</label>
+                    <input type="text" id="editAddress" value="123 Main Street">
+
+                    <label for="editDOB">Date of Birth:</label>
+                    <input type="date" id="editDOB" value="1990-01-01">
+
+                    <button type="button" id="saveProfileBtn" class="btn">Save</button>
+
+                    <br>
+
+                    <button type="button" id="cancelProfileBtn" class="btn cancel">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!-- Order History Section -->
+        <div id="order-history" class="dashboard-section">
+            <h2>Order History</h2>
+
+            <!-- Order Table -->
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Order Number</th>
+                        <th>Status</th>
+                        <th>Tracking Number</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-body">
+                    <!-- Row 1 -->
+                    <tr>
+                        <td>2024-11-25</td>
+                        <td>#ORD12345</td>
+                        <td style="color: yellow;" class="status shipped">Shipped</td>
+                        <td>1Z999AA10123456789</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr>
+                        <td>2024-11-22</td>
+                        <td>#ORD12346</td>
+                        <td style="color: green;" class="status delivered">Delivered</td>
+                        <td>1Z999AA10123456790</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr>
+                        <td>2024-11-20</td>
+                        <td>#ORD12347</td>
+                        <td style="color: red;" class="status cancelled">Cancelled</td>
+                        <td>1Z999AA10123456791</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr>
+                        <td>2024-11-15</td>
+                        <td>#ORD12348</td>
+                        <td style="color: yellow;" class="status shipped">Shipped</td>
+                        <td>1Z999AA10123456792</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 5 -->
+                    <tr>
+                        <td>2024-11-12</td>
+                        <td>#ORD12349</td>
+                        <td style="color: green;" class="status delivered">Delivered</td>
+                        <td>1Z999AA10123456793</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 6 -->
+                    <tr>
+                        <td>2024-11-10</td>
+                        <td>#ORD12350</td>
+                        <td style="color: red;" class="status cancelled">Cancelled</td>
+                        <td>1Z999AA10123456794</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 7 -->
+                    <tr>
+                        <td>2024-11-08</td>
+                        <td>#ORD12351</td>
+                        <td style="color: yellow;" class="status shipped">Shipped</td>
+                        <td>1Z999AA10123456795</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 8 -->
+                    <tr>
+                        <td>2024-11-05</td>
+                        <td>#ORD12352</td>
+                        <td style="color: green;" class="status delivered">Delivered</td>
+                        <td>1Z999AA10123456796</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 9 -->
+                    <tr>
+                        <td>2024-11-02</td>
+                        <td>#ORD12353</td>
+                        <td style="color: red;" class="status cancelled">Cancelled</td>
+                        <td>1Z999AA10123456797</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 10 -->
+                    <tr>
+                        <td>2024-10-30</td>
+                        <td>#ORD12354</td>
+                        <td style="color: yellow;" class="status shipped">Shipped</td>
+                        <td>1Z999AA10123456798</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 11 -->
+                    <tr>
+                        <td>2024-10-28</td>
+                        <td>#ORD12355</td>
+                        <td style="color: green;" class="status delivered">Delivered</td>
+                        <td>1Z999AA10123456799</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 12 -->
+                    <tr>
+                        <td>2024-10-25</td>
+                        <td>#ORD12356</td>
+                        <td style="color: red;" class="status cancelled">Cancelled</td>
+                        <td>1Z999AA10123456800</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 13 -->
+                    <tr>
+                        <td>2024-10-22</td>
+                        <td>#ORD12357</td>
+                        <td style="color: yellow;" class="status shipped">Shipped</td>
+                        <td>1Z999AA10123456801</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 14 -->
+                    <tr>
+                        <td>2024-10-20</td>
+                        <td>#ORD12358</td>
+                        <td style="color: green;" class="status delivered">Delivered</td>
+                        <td>1Z999AA10123456802</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Row 15 -->
+                    <tr>
+                        <td>2024-10-18</td>
+                        <td>#ORD12359</td>
+                        <td style="color: red;" class="status cancelled">Cancelled</td>
+                        <td>1Z999AA10123456803</td>
+                        <td>
+                            <button class="btn delete-btn" onclick="deleteOrder(this)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+        <!-- Session wishlist -->
+
+        <div id="wishlist" class="dashboard-section">
+            <h2>Wishlist</h2>
+            <div class="wishlist-container">
+                <!-- Wishlist items will be dynamically added here -->
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Load the wishlist from localStorage
+                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+                // Render the wishlist items
+                renderWishlist(wishlist);
+
+                // Update the wishlist button state for each product in the grid
+                updateWishlistButtonState(wishlist);
+            });
+
+            // Function to handle adding/removing items from wishlist
+            function toggleWishlist(productId, productImage, productName, productUrl) {
+                // Retrieve the current wishlist from localStorage
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+                // Check if the product is already in the wishlist
+                const existingProduct = wishlist.find(item => item.productId === productId);
+
+                if (existingProduct) {
+                    // If the product is already in the wishlist, remove it
+                    wishlist = wishlist.filter(item => item.productId !== productId);
+                    // Change icon back to default state (unlike)
+                    document.querySelector(`#product-${productId} .wishlist-btn`).classList.remove('active');
+                } else {
+                    // If the product is not in the wishlist, add it
+                    wishlist.push({
+                        productId: productId,
+                        productImage: productImage,
+                        productName: productName,
+                        productUrl: productUrl
+                    });
+                    // Change icon to active state (liked)
+                    document.querySelector(`#product-${productId} .wishlist-btn`).classList.add('active');
+                }
+
+                // Save the updated wishlist to localStorage
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                // Update the wishlist display
+                renderWishlist(wishlist);
+
+                // Update the wishlist button state for each product
+                updateWishlistButtonState(wishlist);
+            }
+
+            // Update the wishlist button state based on localStorage
+            function updateWishlistButtonState(wishlist) {
+                // Loop through all the product cards and check if the product is in the wishlist
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach(card => {
+                    const productId = card.getAttribute('id').replace('product-', ''); // Get the product ID from the card ID
+                    const wishlistButton = card.querySelector('.wishlist-btn');
+
+                    // Check if the product is in the wishlist
+                    const isInWishlist = wishlist.some(item => item.productId === productId);
+
+                    // If the product is in the wishlist, add the active class to the wishlist button
+                    if (isInWishlist) {
+                        wishlistButton.classList.add('active');
+                    } else {
+                        wishlistButton.classList.remove('active');
+                    }
+                });
+            }
+
+            // Render the wishlist items on the page (Dashboard)
+            function renderWishlist(wishlist) {
+                const wishlistContainer = document.querySelector('.wishlist-container');
+                wishlistContainer.innerHTML = ''; // Clear the container
+
+                // Iterate through the wishlist and render each item
+                wishlist.forEach(item => {
+                    const wishlistItem = document.createElement('div');
+                    wishlistItem.classList.add('product-card');
+                    wishlistItem.id = 'wishlist-' + item.productId;
+
+                    wishlistItem.innerHTML = `
+            <div class="product-grid" id="productGrid">
+                <div class="product-card" data-page="1" id="product-1">
+                    <div class="image-container">
+                        <img src="${item.productImage}" alt="${item.productName}" class="product-image">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-type">${item.productType}</h4>
+                        <h3 class="product-name">${item.productName}</h3>
+                        <p class="product-description">Experience the cutting-edge technology for your workspace.</p>
+                        <a href="${item.productUrl}" class="product-link">
+                            <button class="view-more-btn">View More</button>
+                        </a>
+                        <button class="remove-btn" onclick="removeFromWishlist('${item.productId}')">Remove</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                    wishlistContainer.appendChild(wishlistItem);
+                });
+            }
+
+            // Remove a product from the wishlist
+            function removeFromWishlist(productId) {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                wishlist = wishlist.filter(item => item.productId !== productId);
+
+                // Save the updated wishlist to localStorage
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                // Remove the item from the DOM
+                const wishlistItem = document.getElementById('wishlist-' + productId);
+                if (wishlistItem) {
+                    wishlistItem.remove();
+                }
+
+                // Update the wishlist display
+                renderWishlist(wishlist);
+
+                // Update the button state in the product grid
+                const wishlistButton = document.querySelector(`#product-${productId} .wishlist-btn`);
+                if (wishlistButton) {
+                    wishlistButton.classList.remove('active');
+                }
+            }
+
+        </script>
+
+
+
+        <!-- Hidden Form to Add Products -->
+        <div id="add-product-form" class="hidden">
+            <h3>Add New Product</h3>
+            <form id="product-form">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" name="product-name" required>
+
+                <label for="product-description">Description:</label>
+                <input type="text" id="product-description" name="product-description" required>
+
+                <button type="button" class="btn" onclick="addProduct()">Save Product</button>
+                <br>
+                <button type="button" class="btn" onclick="hideAddProductForm()">Cancel</button>
+            </form>
+        </div>
+
+        <!-- Notification start  -->
+
+        <div id="notifications" class="dashboard-section">
+            <h2>Notifications: Latest Updates on Fans</h2>
+            <div id="notifications-container" class="notifications-container">
+                <!-- Notifications will be dynamically added here -->
+            </div>
+            <button id="clear-all-btn" class="btn clear-all-btn">Clear All Notifications</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- JavaScript -->
+
+        <!-- Charts script -->
+        <script>
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.dashboard-section');
+            const icons = document.querySelectorAll('.icon');
+
+            function switchSection(sectionId) {
+                sections.forEach(section => section.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+                navItems.forEach(item => item.classList.remove('active'));
+                document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            }
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const sectionId = item.dataset.section;
+                    switchSection(sectionId);
+                });
+            });
+
+            icons.forEach(icon => {
+                icon.addEventListener('click', () => {
+                    const sectionId = icon.dataset.section;
+                    switchSection(sectionId);
+                });
+            });
+
+            // Chart.js
+            // Bar Chart
+            const barCtx = document.getElementById('barChart').getContext('2d');
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April'],
+                    datasets: [{
+                        label: 'Users',
+                        data: [12, 19, 3, 5],
+                        backgroundColor: '#005d68',
+                        borderColor: '#004f66',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#005d68'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pie Chart
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Completed', 'Pending', 'Missed'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: ['#004f66', '#005d68', '#ccc'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#004f66'
+                            }
+                        }
+                    }
+                }
+            });
+
+        </script>
+
+        <!-- profile script -->
+        <script>
+            // Profile Management Script
+            document.getElementById('updateProfileBtn').addEventListener('click', function () {
+                // Show edit form and hide view
+                document.querySelector('.profile-view').classList.add('hidden');
+                document.querySelector('.profile-edit').classList.remove('hidden');
+            });
+
+            document.getElementById('cancelProfileBtn').addEventListener('click', function () {
+                // Hide edit form and show view
+                document.querySelector('.profile-view').classList.remove('hidden');
+                document.querySelector('.profile-edit').classList.add('hidden');
+            });
+
+            document.getElementById('saveProfileBtn').addEventListener('click', function () {
+                // Get updated values
+                const updatedName = document.getElementById('editName').value;
+                const updatedEmail = document.getElementById('editEmail').value;
+                const updatedPhone = document.getElementById('editPhone').value;
+                const updatedAddress = document.getElementById('editAddress').value;
+                const updatedDOB = document.getElementById('editDOB').value;
+
+                // Check if phone number is exactly 10 digits
+                if (updatedPhone.length !== 10) {
+                    document.getElementById('phone-error').textContent = "Phone number must be exactly 10 digits.";
+                    document.getElementById('phone-error').style.display = 'inline';
+                    return; // Stop the save action if the phone number is invalid
+                }
+
+                // Check if email is valid
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(updatedEmail)) {
+                    document.getElementById('email-error').textContent = "Please enter a valid email address.";
+                    document.getElementById('email-error').style.display = 'inline';
+                    return; // Stop the save action if the email is invalid
+                }
+
+                // Update profile view
+                document.getElementById('profileName').textContent = updatedName;
+                document.getElementById('profileEmail').textContent = updatedEmail;
+                document.getElementById('profilePhone').textContent = updatedPhone;
+                document.getElementById('profileAddress').textContent = updatedAddress;
+                document.getElementById('profileDOB').textContent = updatedDOB;
+
+                // Hide edit form and show view
+                document.querySelector('.profile-view').classList.remove('hidden');
+                document.querySelector('.profile-edit').classList.add('hidden');
+
+                // Display success popup
+                alert('Profile updated successfully!');
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const nameInput = document.getElementById('editName');
+                const phoneInput = document.getElementById('editPhone');
+                const emailInput = document.getElementById('editEmail');
+                const nameError = document.getElementById('name-error');
+                const phoneError = document.getElementById('phone-error');
+                const emailError = document.getElementById('email-error');
+
+                // Real-time validation for name (only letters allowed)
+                nameInput.addEventListener('input', function () {
+                    const nameValue = nameInput.value;
+                    const regex = /[^a-zA-Z\s]/g; // Regex to allow only letters and spaces
+                    if (regex.test(nameValue)) {
+                        nameError.textContent = "Name should only contain letters.";
+                        nameError.style.display = 'inline';
+                        nameInput.value = nameValue.replace(regex, ''); // Remove invalid characters
+                    } else {
+                        nameError.style.display = 'none';
+                    }
+                });
+
+                // Real-time validation for phone (only digits allowed, max 10 digits)
+                phoneInput.addEventListener('input', function () {
+                    const phoneValue = this.value;
+                    // Allow only digits and limit to 10 digits
+                    this.value = phoneValue.replace(/\D/g, '').slice(0, 10);
+
+                    // Display error if phone number is less than 10 digits
+                    if (this.value.length < 10) {
+                        phoneError.textContent = "Phone number must be exactly 10 digits.";
+                        phoneError.style.display = 'inline';
+                    } else {
+                        phoneError.style.display = 'none';
+                    }
+                });
+
+                // Real-time validation for email
+                emailInput.addEventListener('input', function () {
+                    const emailValue = this.value;
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                    if (!emailRegex.test(emailValue)) {
+                        emailError.textContent = "Please enter a valid email address.";
+                        emailError.style.display = 'inline';
+                    } else {
+                        emailError.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+        <!-- notification script -->
+        <script>
+            // Notifications Data for Fans Website
+            const notifications = Array.from({ length: 30 }, (_, index) => {
+                return `New Update: ${['Lasko', 'Vornado', 'Honeywell', 'Usha', 'Bajaj'][index % 5]} fan model is now available with advanced features.`;
+            });
+
+            const notificationsContainer = document.getElementById('notifications-container');
+            const clearAllBtn = document.getElementById('clear-all-btn');
+
+            // Function to Render Notifications
+            function renderNotifications() {
+                notificationsContainer.innerHTML = ''; // Clear existing notifications
+                notifications.forEach((notification, index) => {
+                    const notificationElement = document.createElement('div');
+                    notificationElement.classList.add('notification');
+                    notificationElement.innerHTML = `
+            <p>${notification}</p>
+            <button class="btn delete-btn" onclick="deleteNotification(${index})">Delete</button>
+        `;
+                    notificationsContainer.appendChild(notificationElement);
+                });
+                toggleClearAllBtn();
+            }
+
+            // Function to Delete a Single Notification
+            function deleteNotification(index) {
+                notifications.splice(index, 1); // Remove the notification
+                renderNotifications(); // Re-render notifications
+            }
+
+            // Function to Clear All Notifications
+            clearAllBtn.addEventListener('click', () => {
+                notifications.length = 0; // Clear the array
+                renderNotifications(); // Re-render notifications
+            });
+
+            // Function to Toggle the Clear All Button
+            function toggleClearAllBtn() {
+                clearAllBtn.style.display = notifications.length > 0 ? 'block' : 'none';
+            }
+
+            // Initialize Notifications
+            renderNotifications();
+
+        </script>
+
+
+        <!-- Wishlist script start -->
+
+
+
+        <script>
+            // Function to delete an order
+            function deleteOrder(button) {
+                // Find the row (tr) associated with the clicked delete button
+                var row = button.closest('tr');
+                // Remove the row from the table
+                row.remove();
+            }
+
+            // Function to update the status of an order
+            function updateOrderStatus(button, newStatus) {
+                // Find the row (tr) associated with the clicked button
+                var row = button.closest('tr');
+                // Find the status cell in the row
+                var statusCell = row.querySelector('.status');
+                // Update the status text to the new status
+                statusCell.textContent = newStatus;
+            }
+
+        </script>
+
+
+
+</body>
+
+</html>
